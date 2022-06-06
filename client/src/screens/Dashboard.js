@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid } from "@material-ui/core";
-import Sidebar from "../../components/Sidebar";
-import DashItem from "../../components/DashItem";
-import ProfileItem from "../../components/ProfileItem";
+import { Box, Grid, Typography } from "@material-ui/core";
+import Sidebar from "../components/Sidebar";
+import DashItem from "../components/DashItem";
+import ProfileItem from "../components/ProfileItem";
 
 const useStyles = makeStyles({
   container: {
@@ -17,13 +17,15 @@ const useStyles = makeStyles({
   },
   left: {
     background: "#4F46E5",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   right: {
     background: "white",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "100%",
   },
   text: {
     color: "white",
@@ -88,16 +90,25 @@ const Dashboard = () => {
   };
   return (
     <Grid container className={classes.container}>
-      <Grid className={classes.left} item xs={2}>
-        <Sidebar
-          list={list}
-          changeSemesterOnSidebar={changeSemesterOnSidebar}
-          sidebarState={sidebarState}
-          isProfileSelected={isProfileSelected}
-          setIsProfileSelected={setIsProfileSelected}
-        />
+      <Grid className={classes.left} item xs={3}>
+      <Box
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography className={classes.text} variant="h2" component="h2">
+              EAS
+            </Typography>
+            <Typography className={classes.text} variant="h6" component="h6">
+              Elective Allotment System
+            </Typography>
+        </Box>
       </Grid>
-      <Grid className={classes.right} item xs={10}>
+      <Grid className={classes.right} item xs={9}>
         {isProfileSelected ? (
           <ProfileItem />
         ) : (

@@ -11,7 +11,7 @@ let subject1;
 let subject2;
 let subject3;
 let selsem;
-const DashItem = ({selectedSemester}) => {
+const AdminDashItem = ({selectedSemester}) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -175,7 +175,7 @@ const DashItem = ({selectedSemester}) => {
       bgcolor="background.paper"
       p={1}
       style={{
-        width: "50%",
+        width: "75%",
       }}
     >
       <Box
@@ -199,7 +199,8 @@ const DashItem = ({selectedSemester}) => {
         >
           Window Closing at : 07-07-2022 11:00 AM
         </Typography>
-        {selectedSemester.pe<1 && selectedSemester.spe==6 && (
+        { (
+   
        <Typography
        style={{
          textAlign: "center",
@@ -210,23 +211,7 @@ const DashItem = ({selectedSemester}) => {
        variant="h4"
        component="h4"
      >
-       Open Elective 
-     </Typography>
-    
-   )}
-   {selectedSemester.pe>0 &&  (
-       
-       <Typography
-       style={{
-         textAlign: "center",
-         fontWeight: 600,
-         marginBottom: 20,
-         marginTop: 20,
-       }}
-       variant="h4"
-       component="h4"
-     >
-       Professional Elective
+       Select Courses
      </Typography>
     
    )}
@@ -256,17 +241,19 @@ const DashItem = ({selectedSemester}) => {
               variant="h6"
               component="h6"
             >
-              Priority 1
+              For PE-5 
             </Typography>
             <Input
               onChange={(event) => {
                 subject1 = event.target.value;
               }}
-              style={{ width: "70%" }}
+              style={{ width: "60%" }}
               id="my-input"
               aria-describedby="my-helper-text"
             />
           </FormControl>
+          
+          <div id="oe">
           <FormControl
             style={{
               marginTop: 8,
@@ -286,14 +273,47 @@ const DashItem = ({selectedSemester}) => {
               variant="h6"
               component="h6"
             >
-              Priority 2
+              For OE-2
             </Typography>
             <Input
               onChange={(event) => {
               // console.log(event.target.value);
                 subject2 = event.target.value;
               }}
-              style={{ width: "70%" }}
+              style={{ width: "60%" }}
+              id="my-input"
+              aria-describedby="my-helper-text"
+            />
+          </FormControl>
+          </div>
+
+          <div id="vac">
+          <FormControl
+            style={{
+              marginTop: 8,
+              marginBottom: 8,
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography
+              style={{
+                textAlign: "center",
+                fontWeight: 600,
+                marginBottom: 20,
+                marginTop: 20,
+              }}
+              variant="h6"
+              component="h6"
+            >
+              Value Added Course - 1
+            </Typography>
+            <Input
+              onChange={(event) => {
+                subject1 = event.target.value;
+              }}
+              style={{ width: "60%" }}
               id="my-input"
               aria-describedby="my-helper-text"
             />
@@ -317,17 +337,50 @@ const DashItem = ({selectedSemester}) => {
               variant="h6"
               component="h6"
             >
-              Priority 3
+              Value Added Course - 2
+            </Typography>
+            <Input
+              onChange={(event) => {
+              // console.log(event.target.value);
+                subject2 = event.target.value;
+              }}
+              style={{ width: "60%" }}
+              id="my-input"
+              aria-describedby="my-helper-text"
+            />
+          </FormControl>
+          <FormControl
+            style={{
+              marginTop: 8,
+              marginBottom: 8,
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography
+              style={{
+                textAlign: "center",
+                fontWeight: 600,
+                marginBottom: 20,
+                marginTop: 20,
+              }}
+              variant="h6"
+              component="h6"
+            >
+              Value Added Course - 3
             </Typography>
             <Input
               onChange={(event) => {
                 subject3 = event.target.value;
               }}
-              style={{ width: "70%" }}
+              style={{ width: "60%" }}
               id="my-input"
               aria-describedby="my-helper-text"
             />
           </FormControl>
+          </div>
+
           <Box
             style={{
               display: "flex",
@@ -340,7 +393,7 @@ const DashItem = ({selectedSemester}) => {
               style={{
                 marginTop: 8,
                 marginBottom: 8,
-                width: "30%",
+                width: "15%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -348,7 +401,6 @@ const DashItem = ({selectedSemester}) => {
               variant="contained"
               color="primary"
             >
-              <Lock />
               <Typography
                 style={{
                   textAlign: "center",
@@ -358,7 +410,7 @@ const DashItem = ({selectedSemester}) => {
                 variant="body1"
                 component="body1"
               >
-                Lock
+                Skip
               </Typography>
             </Button>
             <Button
@@ -366,7 +418,7 @@ const DashItem = ({selectedSemester}) => {
               style={{
                 marginTop: 8,
                 marginBottom: 8,
-                width: "30%",
+                width: "15%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -374,7 +426,7 @@ const DashItem = ({selectedSemester}) => {
               variant="contained"
               color="primary"
             >
-              <Save />
+              
               <Typography
                 style={{
                   textAlign: "center",
@@ -384,7 +436,7 @@ const DashItem = ({selectedSemester}) => {
                 variant="body1"
                 component="body1"
               >
-                Save
+                Submit
               </Typography>
             </Button>
           </Box>
@@ -394,176 +446,4 @@ const DashItem = ({selectedSemester}) => {
   );
 };
 
-{/* function Submit_Pe(e){
-
-    e.preventDefault();
-
-    if(selectedSemester.spe == 5)
-    {
-      // When a post request is sent to the create url, we'll add a new record to the database.
-    const newStudent = { 
-      "subject1": subject1,
-      "subject2": subject2,
-      "subject3": subject3,
-    }
-    fetch("http://localhost:5000/record/add/sem5", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newStudent),
-    })
-    .catch(error => {
-      window.alert(error);
-      return;
-    });
-    }
-
-    if(selectedSemester.spe == 6)
-      if(selectedSemester.pe == 1)
-      {
-        {
-          const newStudent = { 
-            "subject1": subject1,
-            "subject2": subject2,
-            "subject3": subject3,
-          };
-      
-           fetch("http://localhost:5000/record/add/sem6pe", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newStudent),
-          })
-          .catch(error => {
-            window.alert(error);
-            return;
-          });
-    
-        }
-      }
-
-      else if(selectedSemester.pe < 1)
-      {
-        {
-          const newStudent = { 
-            "subject1": subject1,
-            "subject2": subject2,
-            "subject3": subject3,
-          };
-      
-           fetch("http://localhost:5000/record/add/sem6oe", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newStudent),
-          })
-          .catch(error => {
-            window.alert(error);
-            return;
-          });
-    
-      }
-    
-    }
-    
-  }
-
-  if(selectedSemester.spe == 7)
-  {
-    {
-      const newStudent = { 
-        "subject1": subject1,
-        "subject2": subject2,
-        "subject3": subject3,
-      
-      };
-  
-       fetch("http://localhost:5000/record/add/sem7", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newStudent),
-      })
-      .catch(error => {
-        window.alert(error);
-        return;
-      });
-
-  }
-
-  if(selectedSemester.spe == 8)
-  {
-    if(selectedSemester.pe == 1)
-    {
-      {
-        const newStudent = { 
-          "subject1": subject1,
-          "subject2": subject2,
-          "subject3": subject3,
-        };
-    
-        await fetch("http://localhost:5000/record/add/sem8pe", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newStudent),
-        })
-        .catch(error => {
-          window.alert(error);
-          return;
-        });
-  
-      }
-    }
-
-    else if(selectedSemester.pe < 1)
-    {
-      {
-        const newStudent = { 
-          "subject1": subject1,
-          "subject2": subject2,
-          "subject3": subject3,
-        };
-    
-        await fetch("http://localhost:5000/record/add/sem8oe", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newStudent),
-        })
-        .catch(error => {
-          window.alert(error);
-          return;
-        });
-  }
-}
-
-
-  } 
-} */}
-// let name1='mukund'
-// async function fdata() {
-//   let name1='mukund'
-//   const newStudent = { 
-//     "name":name1,
-//   };
-//   await fetch("http://localhost:5000/record/name", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(newStudent),
-//       })
-//       .catch(error => {
-//         window.alert(error);
-//         return;
-//       });
-
-//     }     
-export default DashItem;
+export default AdminDashItem;
