@@ -56,7 +56,6 @@ const Login = () => {
   async function onSubmit(e) {
     e.preventDefault();
 
-    // When a post request is sent to the create url, we'll add a new record to the database.
     const newStudent = {
       email: email,
       password: password,
@@ -73,18 +72,7 @@ const Login = () => {
         navigate("/dashboard");
       else if (response.status==400)
         window.alert("Invalid credentials!");
-    });
-    
-    // await fetch("http://localhost:5000/record/validate", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(newStudent),
-    // }).catch((error) => {
-    //   window.alert(error);
-    //   return;
-    // });
+    });    
   }
 
   return (
@@ -175,8 +163,8 @@ const Login = () => {
               >
                 Login
               </Button>
-              <Link href="#" onClick={() => navigate("/register")} variant="body2">
-                Click here to register
+              <Link href="#" onClick={() => navigate("/forgotpassword")} variant="body2">
+                Forgot Password
               </Link>
             </form>
             </Box>

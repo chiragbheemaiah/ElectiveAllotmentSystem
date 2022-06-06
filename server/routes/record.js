@@ -27,7 +27,6 @@ recordRoutes.route("/record").get(function (req, res) {
 });
 
 recordRoutes.route("/record/validate").post(async function (request, response) {
-  console.log("myDocument");
   let db_connect = dbo.getDb();
   let em=request.body.email;
   let pw=request.body.password;
